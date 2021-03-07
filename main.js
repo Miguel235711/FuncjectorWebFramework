@@ -55,7 +55,8 @@ let main = ()=> {
                 })
             }),
             table({headerContentFunction:()=>['a','b','c'],bodyContentFunction:()=>matrix}),
-            Component(body)
+            Component()(body),
+            
         ]        
     })
 }
