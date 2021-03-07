@@ -7,8 +7,8 @@ import input from './js/tags/input.js'
 import table from './js/tags/table.js'
 import {withChildrenF} from './js/transformers/ref.js'
 
-const event = document.createEvent('Event')
-event.initEvent('SetState',true,true)
+import Component from './src/Component/Component.js'
+
 
 let matrix = [
     [3,6,5],
@@ -17,14 +17,15 @@ let matrix = [
 
 let SetState = (callback)=> ()=>{
     callback()
-    document.dispatchEvent(event)
+    main()
 }
 
-let main = (event)=> {
+let main = ()=> {
     //({element,childrenFunctions})
     console.log('main called')
+    let body = document.querySelector('body')
     setChildren({
-        element: document.querySelector('body'),
+        element: body,
         childrenFunctions: [
             span({text:'Inner text'}),
             withChildrenF({elementFunction:div(),childrenFunctions:[
@@ -53,10 +54,10 @@ let main = (event)=> {
                             matrix[i][j]++;
                 })
             }),
-            table({headerContentFunction:()=>['a','b','c'],bodyContentFunction:()=>matrix})
+            table({headerContentFunction:()=>['a','b','c'],bodyContentFunction:()=>matrix}),
+            Component(body)
         ]        
     })
 }
 
-addEventListener('SetState',()=>main(event))
-addEventListener('DOMContentLoaded',()=>main(event))
+addEventListener('DOMContentLoaded',SetState(()=>{}))

@@ -16,6 +16,7 @@ let setChildren = ({element,childrenFunctions}) =>{
     childrenFunctions.forEach(child=>element.appendChild(child()))
     return element
 }
+
 let withChildrenF = ({elementFunction,childrenFunctions}) => () => setChildren({element:elementFunction(),childrenFunctions:childrenFunctions})
 
 export {setChildren,setClasses,setId,withChildrenF}
