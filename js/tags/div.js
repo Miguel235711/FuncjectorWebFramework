@@ -1,3 +1,12 @@
-import tag from './tag.js'
+///Change in framework
 
-export default ({classes,id,text,click}={}) => tag('div',{classes:classes,id:id,text:text,click:click})
+import tag from './tag.js'
+import {withChildrenF} from '../../js/transformers/ref.js'
+
+export default (childrenFunctions,{classes,id,text,click}={}) => {
+    let _div = tag('div',{classes:classes,id:id,text:text,click:click})
+    return childrenFunctions ? 
+        withChildrenF({elementFunction:_div,childrenFunctions:childrenFunctions}):
+        _div
+}
+        

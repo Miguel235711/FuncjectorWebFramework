@@ -13,10 +13,11 @@ export default ()=>{
     
     let counter = 0
     let instance = undefined
-    let parent = undefined    
+    let parent = undefined  
     let main = () => { 
         //({element,childrenFunctions})
         let root = div({text: counter.toString()})()
+        let child =  Child()(root)  
         console.log('what: ',typeof(Child(root)))
         instance = setChildren({
             element: root,
@@ -33,7 +34,8 @@ export default ()=>{
                     text:'Hello'
                 }),
                 Child()(root),
-                Child()(root)
+                Child()(root),
+                child
             ]        
         })
         return instance
