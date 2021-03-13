@@ -27,7 +27,7 @@ let bindListenerToHolderBiValue =  (elementFunction,valueHolder,eventName,{inter
         valueHolder.listenerElements.push(element)
          ///set value with interceptor
          if(interceptorFunction){
-            let value = interceptorFunction(element.value)
+            let value = interceptorFunction(valueHolder.value)
             valueHolder.setValue(value)
         }else{
             ///set html element with value of valueHolder
@@ -59,11 +59,13 @@ let bindChangeListenerToHolderBiIndex =  (elementFunction,indexHolder,{intercept
             //console.log(`new index ${index}`)
             indexHolder.setIndex(index)
         })
+        //console.log('indexHolder!!!:',indexHolder)
         ///change element when value changes
         indexHolder.listenerElements.push(element)
         ///set index with interceptor
         if(interceptorFunction){
-            let index = interceptorFunction(element.selectedIndex)
+            //console.log(`indexHolder.value ${indexHolder.index}`)
+            let index = interceptorFunction(indexHolder.index)
             indexHolder.setIndex(index)
         }else{
             ///set html element with index of indexHolder
