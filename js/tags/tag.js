@@ -1,6 +1,6 @@
 import {setClasses,setId} from '../transformers/ref.js'
 
-export default (tagName,{classes,id,text,click}={}) => () =>{
+export default (tagName,{classes,id,text,click,value}={}) => () =>{
     let _tag = document.createElement(tagName)
     if(classes)
         //(element,classes)
@@ -13,5 +13,7 @@ export default (tagName,{classes,id,text,click}={}) => () =>{
         _tag.innerText=text
     if(click)
         _tag.addEventListener("click",click) ///TODO: extend later
+    if(value)
+        _tag.setAttribute("value",value)
     return _tag
 }
