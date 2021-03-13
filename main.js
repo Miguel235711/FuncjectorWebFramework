@@ -16,8 +16,8 @@ let matrix = [
 ]
 
 let SetState = (callback)=> ()=>{
-    callback()
     main()
+    callback()
 }
 
 let main = ()=> {

@@ -4,9 +4,9 @@ import div from '../../../js/tags/div.js'
 
 export default ()=>{
     let SetState = (callback)=> ()=>{ ///extrapolate functionality to ref.js
-        callback()
         let old = instance
         parent.replaceChild(main(),old)
+        callback()
     }
     
     let counter = 0
